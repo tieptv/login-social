@@ -23,6 +23,7 @@ function App() {
     buttonText="Login"
     onSuccess={responseGoogle}
     onFailure={responseFailded}
+    prompt={'consent'}
     cookiePolicy={'single_host_origin'}
     style={{width: '100%'}}
   />
