@@ -7,6 +7,10 @@ function App() {
   const responseGoogle = (response) => {
     console.log(response);
   }
+
+  const responseFailded = (response) => {
+    console.log(response);
+  }
   const responseFacebook = (response) => {
     console.log(response);
   }
@@ -18,7 +22,7 @@ function App() {
     clientId="465688552574-oe55l5fdef0t269dk8ghduk0bbuu8guu.apps.googleusercontent.com"
     buttonText="Login"
     onSuccess={responseGoogle}
-    onFailure={responseGoogle}
+    onFailure={responseFailded}
     cookiePolicy={'single_host_origin'}
     style={{width: '100%'}}
   />
