@@ -1,11 +1,26 @@
-﻿import React from 'react';
+﻿import axios from 'axios';
+import React, { useState } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
 function App() {
+  const [token, setToken] = useState('');
 
   const responseGoogle = (response) => {
     console.log(response);
+    axios.post('http://localhost:8041/api/v1/user/login', {
+      token: response.tokenId,
+      type: 'GOOGLE',
+      json_type: 'login'
+    })
+    .then(function (response) {
+      setToken(response.data.token)
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   }
 
   const responseFailded = (response) => {
@@ -17,9 +32,12 @@ function App() {
 
   return (
     <>
+    <div>
+      Token: {token}
+    </div>
     <div style={{width: '200px'}}>
 <GoogleLogin
-    clientId="465688552574-oe55l5fdef0t269dk8ghduk0bbuu8guu.apps.googleusercontent.com"
+    clientId="465688552574-ind2q43ht8g6q3va7rclkr6j2oph15bk.apps.googleusercontent.com"
     buttonText="Login"
     onSuccess={responseGoogle}
     onFailure={responseFailded}
