@@ -7,10 +7,14 @@ function App() {
   const [token, setToken] = useState('');
 
   const responseGoogle = (response) => {
-    console.log(response);
+    callApiLogin('GOOGLE', response.tokenId);
+  }
+
+  const callApiLogin = (type, token) => {
+    onsole.log(response);
     axios.post('http://localhost:8041/api/v1/user/login', {
-      token: response.tokenId,
-      type: 'GOOGLE',
+      token: token,
+      type: type,
       json_type: 'login'
     })
     .then(function (response) {
@@ -20,14 +24,13 @@ function App() {
     .catch(function (error) {
       console.log(error);
     });
-
   }
 
   const responseFailded = (response) => {
     console.log(response);
   }
   const responseFacebook = (response) => {
-    console.log(response);
+    callApiLogin('FACEBOOK', response.accessToken);
   }
 
   return (
