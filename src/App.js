@@ -11,7 +11,6 @@ function App() {
   }
 
   const callApiLogin = (type, token) => {
-    onsole.log(response);
     axios.post('http://localhost:8041/api/v1/user/login', {
       token: token,
       type: type,
